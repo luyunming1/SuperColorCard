@@ -726,7 +726,7 @@
 					"$(inherited)",
 				);
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = 333;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = 111;
 				SDKROOT = iphoneos;
 				STRIP_PNG_TEXT = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -763,7 +763,7 @@
 					"$(inherited)",
 				);
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = 333;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = 111;
 				SDKROOT = iphoneos;
 				STRIP_PNG_TEXT = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
