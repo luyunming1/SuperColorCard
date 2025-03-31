@@ -64,10 +64,10 @@ APP_STORE_ID	Put your TestFlight Apple id number (General > App Information > Ap
 
 
 XCODE_WORKSPACE	Put the name of your workspace here	ios_config
-hello_world.xcodeproj
+colorCard.xcodeproj
 
 XCODE_SCHEME	Put the name of your scheme here	ios_config
-hello_world-mobile
+colorCard-mobile
 
 CM_BUILD_DIR
 jsb-default/frameworks/runtime-src/proj.ios_mac
