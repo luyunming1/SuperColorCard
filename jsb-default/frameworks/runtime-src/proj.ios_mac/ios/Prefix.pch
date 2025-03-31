@@ -1,5 +1,5 @@
 //
-// Prefix header for all source files of the 'dream' target in the 'dream' project
+// Prefix header for all source files of the 'colorCard' target in the 'colorCard' project
 //
 
 #ifdef __OBJC__
