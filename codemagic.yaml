@@ -24,18 +24,25 @@ workflows:
       - name: Increment build number
         script: |
           cd $CM_BUILD_DIR
-          agvtool new-version -all $(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_APP_ID") + 1))
+          # 获取最新的 TestFlight 构建号
+          LATEST_BUILD=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APP_ID")
+          # 将版本号中的小数点移除，转换为整数
+          LATEST_BUILD_INT=$(echo $LATEST_BUILD | tr -d '.')
+          # 增加版本号
+          NEW_BUILD=$((LATEST_BUILD_INT + 1))
+          # 更新版本号
+          agvtool new-version -all $NEW_BUILD
       - name: Build ipa for distribution
         script: |
           xcode-project build-ipa --project "$CM_BUILD_DIR/$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME" --verbose
     artifacts:
       - build/ios/ipa/*.ipa
     publishing:
-      app_store_connect: # https://docs.codemagic.io/publishing-yaml/distribution
+      app_store_connect:
         submit_to_app_store: true
-        api_key: $APP_STORE_CONNECT_PRIVATE_KEY # Contents of the API key, can also reference environment variable such as $APP_STORE_CONNECT_PRIVATE_KEY
-        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER # Alphanumeric value that identifies the API key, can also reference environment variable such as $APP_STORE_CONNECT_KEY_IDENTIFIER
-        issuer_id: $APP_STORE_CONNECT_ISSUER_ID # Alphanumeric value that identifies who created the API key, can also reference environment variable such as $APP_STORE_CONNECT_ISSUER_ID
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
       email:
         recipients:
           - wenlianghua3@gmail.com
